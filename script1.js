@@ -2,20 +2,21 @@ console.log("START");
 
 const containerVar = document.querySelector("#container");
 
-//const item = document.createElement("div");
-//item.classList.add("yeahthissomeshit");
-//item.textContent = "oh yeah this some real shit";
+let y = 0
+while (y < 5) {
+    //console.log("x is "+x);
+    const itemCont = document.createElement("div");
+    itemCont.classList.add("itemCont");
+    
+    let x = 0;
+    while (x < 4) {
+        const item = document.createElement("div");
+        item.classList.add("sqrs")
 
-//containerVar.appendChild(item);
-
-let x = 0
-while (x < 5) {
-    console.log(x);
-    const item = document.createElement("div");
-    item.classList.add("sqrs")
-    item.textContent = "ABCDEFG";
-
-    containerVar.appendChild(item);
-    x++;
+        itemCont.appendChild(item);
+        x++
+    }
+    containerVar.appendChild(itemCont);
+    y++;
 }
   
