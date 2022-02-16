@@ -14,24 +14,43 @@ function makeGrid(rowTotal, columnTotal) {
             item.classList.add("sqrs");
 
             itemCont.appendChild(item);
-            item.addEventListener("mouseover", () => item.classList.add("used"))
-            rowCount++
+            
+            item.addEventListener("mouseenter", () => {
+                if (item.classList.contains("used") === false) {
+                item.style.backgroundColor = "red";
+                }
+            })
+            item.addEventListener("mouseleave", () => {
+                if (item.classList.contains("used") === false) {
+                    item.classList.add("used");
+                    item.style.backgroundColor = funColors();
+                }
+            })
+            rowCount++;
         }
 
         containerVar.appendChild(itemCont);
-        columnCount++
+        columnCount++;
     }
 }
 
-makeGrid(16,16)
+makeGrid(16,16);
 
 const resetBtn = document.querySelector("#resetBtn")
 resetBtn.addEventListener("click", () => {
-    const input = prompt("How big?", "16")
-
-    while (containerVar.hasChildNodes()) {
-        containerVar.removeChild(containerVar.firstChild)
+    const input = prompt("How big would you like the board to be?", "16")
+    
+    if (input <= 100 && input > 0) {
+        while (containerVar.hasChildNodes()) {
+            containerVar.removeChild(containerVar.firstChild)
+        }
+        makeGrid(input,input);
+    } else {
+        alert("You must input a number between 0 and 100 to resize the board")
     }
-
-    makeGrid(input,input);
 })
+
+function funColors() {
+    let colorNum = "#" + (((1<<23)*1.5)*Math.random() | 0).toString(16);
+    return colorNum
+}
