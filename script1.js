@@ -46,7 +46,7 @@ resetBtn.addEventListener("click", () => {
         }
         makeGrid(input,input);
     } else {
-        alert("You must input a number between 0 and 100 to resize the board")
+        alert("You must input a number between 1 and 100 to resize the board")
     }
 })
 
